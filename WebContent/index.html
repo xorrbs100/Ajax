@@ -7,16 +7,15 @@
   <script src="colors.js"></script>
 </head>
 <body>
-  <h1><a href="index.html">WEB</a></h1>
+  <h1><a href="#!welcome">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
   ">
-  <ol>
-    <li><a onclick="fetchPage('1.html')">HTML</a></li>
-    <li><a onclick="fetchPage('2.html')">CSS</a></li>
-    <li><a onclick="fetchPage('3.html')">JavaScript</a></li>
+  <ol id="nav">
+    
   </ol>
-  <article><!-- li눌렀을시 내용 표시하는 곳 -->
+  <!-- list 눌렀을시 내용 표시하는 곳 -->
+  <article>
   	
   
   </article>
@@ -24,12 +23,37 @@
   	function fetchPage(name) {
 	  fetch(name).then(function(response) {
 			response.text().then(function(text) {
-				
-				document.querySelector('article').innerHTML=text;
+				document.querySelector('article').innerHTML = text;
 			})
+		});
+	}
+  	if(location.hash){
+  		fetchPage(location.hash.substr(2));
+  	}else{
+  		fetchPage('welcome');
+  	}
+	
+  	fetch('list').then(function(response) {
+		response.text().then(function(text) {
+			
+			console.log(text);		//리스트에있는 텍스트출력
+			var items= text.split(',');	//배열에 텍스트를 ,로 구분하여 담음
+			var i =0;
+			var tags='';
+			while(i<items.length){
+				var item = items[i];
+				item=item.trim();
+				//<li><a href="#!javascript" onclick="fetchPage('3.html')">JavaScript</a></li>
+				/* var tag = '<li><a href="#!'+item+'.html" onclick="fetchPage(\''+item+'\')">'+item+'</a></li>' */
+				//백틱사용
+				let tag = `<li><a href="#!${item}" onclick="fetchPage('${item}.html')">${item}</a></li>`
+				tags+=tag;
+				i++;
+			}
+			console.log(items);
+			document.querySelector('#nav').innerHTML=tags;		//id값이 nav = #nav
 		})
-}
-	  
+	});
   </script>
 </body>
 </html>
