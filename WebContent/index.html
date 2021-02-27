@@ -12,13 +12,24 @@
     nightDayHandler(this);
   ">
   <ol>
-    <li><a onclick="document.querySelector('article').innerHTML='<h2>HTML</h2>HTML is';">HTML</a></li>
-    <li><a onclick="document.querySelector('article').innerHTML='<h2>CSS</h2>CSS is';">CSS</a></li>
-    <li><a onclick="document.querySelector('article').innerHTML='<h2>CSS</h2>CSS is';">JavaScript</a></li>
+    <li><a onclick="fetchPage('1.html')">HTML</a></li>
+    <li><a onclick="fetchPage('2.html')">CSS</a></li>
+    <li><a onclick="fetchPage('3.html')">JavaScript</a></li>
   </ol>
   <article><!-- li눌렀을시 내용 표시하는 곳 -->
   	
-  	
+  
   </article>
+  <script type="text/javascript">
+  	function fetchPage(name) {
+	  fetch(name).then(function(response) {
+			response.text().then(function(text) {
+				
+				document.querySelector('article').innerHTML=text;
+			})
+		})
+}
+	  
+  </script>
 </body>
 </html>
