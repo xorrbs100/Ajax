@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<!-- fetchAPI가 안될때 XMLHttpRequest, polyfill->옛날방식 -->
 <article>
 	
 </article>
