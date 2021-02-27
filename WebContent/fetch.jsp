@@ -8,7 +8,8 @@
 </head>
 <body>
 
-<!-- fetchAPI가 안될때 XMLHttpRequest, polyfill->옛날방식 -->
+<!-- fetchAPI가 안될때 XMLHttpRequest, polyfill->옛날방식 can i use 라는 사이트에서 어느버전의 브라우저에서 
+어떤 API를 사용할 수 있는지 검색 가능 -->
 <article>
 	
 </article>
